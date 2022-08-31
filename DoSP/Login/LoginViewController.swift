@@ -22,26 +22,8 @@ class LoginViewController: UIViewController {
     @IBAction func emailLoginButtonTapped(_ sender: UIButton) {
         let email = self.emailTextField.text ?? ""
         let password = self.passwordTextField.text ?? ""
+        self.loginUser(withEmail: email, password: password)
         
-        // need to move create user page
-        Auth.auth().createUser(withEmail: email, password: password){ [weak self] authResult, error in
-            guard let self = self else { return }
-            
-            if let error = error {
-                let code = (error as NSError).code
-                
-                switch code {
-                case 17007:
-                    // email address is already in use by another account
-                    self.loginUser(withEmail: email, password: password)
-                default:
-                    print("error")
-                }
-            } else {
-                self.goMainViewController()
-            }
-            
-        }
     }
     
     private func goMainViewController() {
@@ -50,6 +32,7 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(mainViewController, animated: true)
     }
     
+    // TODO: - print -> alert
     private func loginUser(withEmail email: String, password: String) {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
                 guard let self = self else {return}
@@ -60,4 +43,10 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+    
+    @IBAction func createAccountButtonTapped(_ sender: UIButton) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let createUserViewController = storyBoard.instantiateViewController(withIdentifier: "CreateUserViewController")
+        self.navigationController?.pushViewController(createUserViewController, animated: true)
+    }
 }
