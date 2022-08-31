@@ -1,19 +1,15 @@
 //
-//  ViewController.swift
+//  TestViewController.swift
 //  DoSP
 //
 //  Created by JIHA YOON on 2022/08/31.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
-
+class TestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
 }
-
