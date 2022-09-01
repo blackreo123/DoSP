@@ -38,7 +38,19 @@ class LoginViewController: UIViewController {
                 if let error = error {
                     Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
                 } else {
-                    self.goMainViewController()
+                    guard let isEmailVerified = Auth.auth().currentUser?.isEmailVerified else {
+                        Alerts.showAlertAction(viewController: self, message: "your email is not Verified please check your email")
+                        return
+                    }
+                    
+                    if isEmailVerified {
+                        self.goMainViewController()
+                    } else {
+                        Alerts.showAlertAction(viewController: self, message: "your email is not Verified please check your email")
+                    }
+                        
+                    
+                    
                 }
             }
         }

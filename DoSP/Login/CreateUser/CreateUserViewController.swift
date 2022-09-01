@@ -24,7 +24,6 @@ class CreateUserViewController: UIViewController {
         
     }
     
-    // TODO: - print -> alert
     @IBAction func submitButtonTapped(_ sender: UIButton) {
         guard let email = self.createEmailTextField.text,
               let password = self.createPasswordTextField.text,
@@ -34,7 +33,7 @@ class CreateUserViewController: UIViewController {
             
             Auth.auth().createUser(withEmail: email, password: password){ [weak self] authResult, error in
                 guard let self = self else { return }
-                print("authResult: \(authResult.debugDescription)")
+                
                 if let error = error {
                     let code = (error as NSError).code
                     
@@ -48,8 +47,14 @@ class CreateUserViewController: UIViewController {
                         return
                     }
                 } else {
-                    Alerts.showAlertAction(viewController: self, message: "create success", completeTitle: "OK") {
-                        self.navigationController?.popViewController(animated: true)
+                    Auth.auth().currentUser?.sendEmailVerification { error in
+                        if let error = error {
+                            Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
+                        } else {
+                            Alerts.showAlertAction(viewController: self, message: "we send verify email please check you email", completeTitle: "OK") {
+                                self.navigationController?.popViewController(animated: true)
+                            }
+                        }
                     }
                     return
                 }
