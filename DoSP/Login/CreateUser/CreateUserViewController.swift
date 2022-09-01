@@ -28,10 +28,7 @@ class CreateUserViewController: UIViewController {
     @IBAction func submitButtonTapped(_ sender: UIButton) {
         guard let email = self.createEmailTextField.text,
               let password = self.createPasswordTextField.text,
-              let passwordConfirm = self.createPasswordConfirmTextField.text else {
-            print("input all")
-            return
-        }
+              let passwordConfirm = self.createPasswordConfirmTextField.text else { return }
         
         if password == passwordConfirm {
             
@@ -44,19 +41,21 @@ class CreateUserViewController: UIViewController {
                     switch code {
                     case 17007:
                         // email address is already in use by another account
-                        print("already have that email")
+                        Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
                         return
                     default:
-                        print("error")
+                        Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
                         return
                     }
                 } else {
-                    print("create success")
+                    Alerts.showAlertAction(viewController: self, message: "create success", completeTitle: "OK") {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                     return
                 }
             }
         } else {
-            print("password not equal with password Confirm")
+            Alerts.showAlertAction(viewController: self, message: "password not equal with password Confirm")
             return
         }
     }

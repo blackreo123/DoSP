@@ -32,12 +32,11 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(mainViewController, animated: true)
     }
     
-    // TODO: - print -> alert
     private func loginUser(withEmail email: String, password: String) {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
                 guard let self = self else {return}
                 if let error = error {
-                    print("error")
+                    Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
                 } else {
                     self.goMainViewController()
                 }

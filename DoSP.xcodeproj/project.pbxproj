@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		620CD1C228BFC7650093C03B /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620CD1C128BFC7650093C03B /* CreateUserViewController.swift */; };
 		621179EB28BF77D3007BDF1B /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 621179EA28BF77D3007BDF1B /* GoogleSignIn */; };
+		6222895928C0565E00D90178 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6222895828C0565E00D90178 /* Alerts.swift */; };
 		623B9B1728BF86B2009772A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 623B9B1628BF86B2009772A8 /* GoogleService-Info.plist */; };
 		623B9B1A28BF8A27009772A8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 623B9B1928BF8A27009772A8 /* FirebaseAnalytics */; };
 		623B9B1D28BF913B009772A8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 623B9B1C28BF913B009772A8 /* FirebaseAuth */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		620CD1C128BFC7650093C03B /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
+		6222895828C0565E00D90178 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		623B9B1628BF86B2009772A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		623B9B1E28BF9588009772A8 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		62C84AFE28BF70C000F945D4 /* DoSP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoSP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +61,14 @@
 			path = CreateUser;
 			sourceTree = "<group>";
 		};
+		6222895728C0563100D90178 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6222895828C0565E00D90178 /* Alerts.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		623B9B1B28BF913B009772A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 		62C84B0028BF70C000F945D4 /* DoSP */ = {
 			isa = PBXGroup;
 			children = (
+				6222895728C0563100D90178 /* Components */,
 				62C84B1528BF725500F945D4 /* Login */,
 				62C84B0128BF70C000F945D4 /* AppDelegate.swift */,
 				62C84B0328BF70C000F945D4 /* SceneDelegate.swift */,
@@ -195,6 +206,7 @@
 				620CD1C228BFC7650093C03B /* CreateUserViewController.swift in Sources */,
 				62C84B0228BF70C000F945D4 /* AppDelegate.swift in Sources */,
 				623B9B1F28BF9588009772A8 /* TestViewController.swift in Sources */,
+				6222895928C0565E00D90178 /* Alerts.swift in Sources */,
 				62C84B0428BF70C000F945D4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
