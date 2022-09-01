@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class Alerts {
-    static func showAlertAction(viewController: UIViewController, preferredStyle: UIAlertController.Style = .alert, title: String = "", message: String = "", completeTitle: String = "Yes", _ completeHandler:(() -> Void)? = nil){
+    static func showAlertAction(viewController: UIViewController, preferredStyle: UIAlertController.Style = .alert, title: String = "", message: String = "", completeTitle: String = "Yes", completeHandler:(() -> Void)? = nil){
                 
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
@@ -24,7 +24,7 @@ class Alerts {
                 }
             }
     
-    static func showAlertAction(viewController: UIViewController, preferredStyle: UIAlertController.Style = .alert, title: String = "", message: String = "", completeTitle: String = "Yes", cancelTitle: String = "Cancel", _ completeHandler:(() -> Void)? = nil, _ cancelHandler:(() -> Void)? = nil){
+    static func showAlertAction(viewController: UIViewController, preferredStyle: UIAlertController.Style = .alert, title: String = "", message: String = "", completeTitle: String = "Yes", cancelTitle: String = "Cancel", completeHandler:(() -> Void)? = nil, cancelHandler:(() -> Void)? = nil){
                 
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)

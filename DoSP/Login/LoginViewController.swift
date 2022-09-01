@@ -10,12 +10,17 @@ import UIKit
 import GoogleSignIn
 import FirebaseAuth
 import Firebase
+import AuthenticationServices
+
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginWithGoogleButton: GIDSignInButton!
+    @IBOutlet weak var loginWithAppleButton: ASAuthorizationAppleIDButton!
+    
+    var currentNonce: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +33,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    private func goMainViewController() {
+    func goMainViewController() {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let mainViewController = storyBoard.instantiateViewController(withIdentifier: "TestViewController")
         self.navigationController?.pushViewController(mainViewController, animated: true)
@@ -85,4 +90,27 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func loginWithAppleButtonTapped(_ sender: UIButton) {
+        self.performLoginWithApple()
+    }
+    
+    private func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let nonce = randomNonceString()
+        request.nonce = sha256(nonce)
+        currentNonce = nonce
+        
+        return request
+    }
+    
+    private func performLoginWithApple() {
+        let request = createAppleIDRequest()
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
 }

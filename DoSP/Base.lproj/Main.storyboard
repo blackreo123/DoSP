@@ -94,11 +94,20 @@
                                     <action selector="loginWithGoogleButtonTapped:" destination="jrZ-XC-o64" eventType="touchUpInside" id="YiH-IG-l6I"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9H-jX-thk">
+                                <rect key="frame" x="30" y="505" width="354" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login with Apple"/>
+                                <connections>
+                                    <action selector="loginWithAppleButtonTapped:" destination="jrZ-XC-o64" eventType="touchUpInside" id="x6H-Bg-stl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BHF-kY-ruh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BHF-kY-ruh" firstAttribute="trailing" secondItem="fDh-K0-Jsf" secondAttribute="trailing" constant="30" id="2x7-Ma-uI5"/>
+                            <constraint firstItem="h9H-jX-thk" firstAttribute="leading" secondItem="BHF-kY-ruh" secondAttribute="leading" constant="30" id="3SL-rP-bpc"/>
                             <constraint firstItem="fDh-K0-Jsf" firstAttribute="leading" secondItem="BHF-kY-ruh" secondAttribute="leading" constant="30" id="3iN-Bo-lGz"/>
                             <constraint firstItem="l0x-Yl-ave" firstAttribute="leading" secondItem="BHF-kY-ruh" secondAttribute="leading" constant="30" id="FaG-7d-13Y"/>
                             <constraint firstItem="J9m-0a-5PY" firstAttribute="top" secondItem="l0x-Yl-ave" secondAttribute="bottom" constant="50" id="FvF-Ku-ckV"/>
@@ -113,12 +122,16 @@
                             <constraint firstItem="kWB-51-fV7" firstAttribute="top" secondItem="kI1-zM-0eq" secondAttribute="bottom" constant="30" id="iYF-X5-Dye"/>
                             <constraint firstItem="BHF-kY-ruh" firstAttribute="trailing" secondItem="J9m-0a-5PY" secondAttribute="trailing" constant="30" id="kf1-a5-EDH"/>
                             <constraint firstItem="kI1-zM-0eq" firstAttribute="centerX" secondItem="mdw-Nz-oNb" secondAttribute="centerX" id="lEk-9V-KcX"/>
+                            <constraint firstItem="h9H-jX-thk" firstAttribute="top" secondItem="kWB-51-fV7" secondAttribute="bottom" constant="8" symbolic="YES" id="mTl-cH-WcF"/>
+                            <constraint firstItem="BHF-kY-ruh" firstAttribute="trailing" secondItem="h9H-jX-thk" secondAttribute="trailing" constant="30" id="rwA-Rs-zkw"/>
                             <constraint firstItem="kWB-51-fV7" firstAttribute="centerX" secondItem="mdw-Nz-oNb" secondAttribute="centerX" id="vG2-Ox-ygc"/>
+                            <constraint firstItem="h9H-jX-thk" firstAttribute="centerX" secondItem="mdw-Nz-oNb" secondAttribute="centerX" id="zGp-kv-LyE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f3s-PP-u6r"/>
                     <connections>
                         <outlet property="emailTextField" destination="mSn-aR-1Cg" id="b7D-l1-iDj"/>
+                        <outlet property="loginWithAppleButton" destination="h9H-jX-thk" id="Zgm-wb-eod"/>
                         <outlet property="loginWithGoogleButton" destination="kWB-51-fV7" id="Dca-uy-E3x"/>
                         <outlet property="passwordTextField" destination="heG-S2-PrJ" id="Gge-MJ-Gnk"/>
                     </connections>
