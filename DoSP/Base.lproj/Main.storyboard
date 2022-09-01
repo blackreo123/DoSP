@@ -80,6 +80,20 @@
                                     <action selector="createAccountButtonTapped:" destination="jrZ-XC-o64" eventType="touchUpInside" id="clp-yM-dy7"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kI1-zM-0eq">
+                                <rect key="frame" x="193" y="412" width="28.5" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kWB-51-fV7">
+                                <rect key="frame" x="137" y="466" width="140.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login with Google"/>
+                                <connections>
+                                    <action selector="loginWithGoogleButtonTapped:" destination="jrZ-XC-o64" eventType="touchUpInside" id="YiH-IG-l6I"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BHF-kY-ruh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -89,18 +103,23 @@
                             <constraint firstItem="l0x-Yl-ave" firstAttribute="leading" secondItem="BHF-kY-ruh" secondAttribute="leading" constant="30" id="FaG-7d-13Y"/>
                             <constraint firstItem="J9m-0a-5PY" firstAttribute="top" secondItem="l0x-Yl-ave" secondAttribute="bottom" constant="50" id="FvF-Ku-ckV"/>
                             <constraint firstItem="BHF-kY-ruh" firstAttribute="trailing" secondItem="0cA-Sf-epW" secondAttribute="trailing" constant="30" id="G3e-mt-CpW"/>
+                            <constraint firstItem="kI1-zM-0eq" firstAttribute="top" secondItem="fDh-K0-Jsf" secondAttribute="bottom" constant="30" id="IwP-5W-uCe"/>
                             <constraint firstItem="fDh-K0-Jsf" firstAttribute="top" secondItem="J9m-0a-5PY" secondAttribute="bottom" constant="8" symbolic="YES" id="LEf-P4-Cxw"/>
                             <constraint firstItem="BHF-kY-ruh" firstAttribute="trailing" secondItem="l0x-Yl-ave" secondAttribute="trailing" constant="30" id="RQO-FH-MAs"/>
                             <constraint firstItem="0cA-Sf-epW" firstAttribute="leading" secondItem="BHF-kY-ruh" secondAttribute="leading" constant="30" id="YHX-gk-zqZ"/>
                             <constraint firstItem="l0x-Yl-ave" firstAttribute="top" secondItem="0cA-Sf-epW" secondAttribute="bottom" constant="15" id="dcu-ul-JVW"/>
                             <constraint firstItem="J9m-0a-5PY" firstAttribute="leading" secondItem="BHF-kY-ruh" secondAttribute="leading" constant="30" id="djH-Ns-mdk"/>
                             <constraint firstItem="0cA-Sf-epW" firstAttribute="top" secondItem="BHF-kY-ruh" secondAttribute="top" constant="30" id="iY7-QJ-VHi"/>
+                            <constraint firstItem="kWB-51-fV7" firstAttribute="top" secondItem="kI1-zM-0eq" secondAttribute="bottom" constant="30" id="iYF-X5-Dye"/>
                             <constraint firstItem="BHF-kY-ruh" firstAttribute="trailing" secondItem="J9m-0a-5PY" secondAttribute="trailing" constant="30" id="kf1-a5-EDH"/>
+                            <constraint firstItem="kI1-zM-0eq" firstAttribute="centerX" secondItem="mdw-Nz-oNb" secondAttribute="centerX" id="lEk-9V-KcX"/>
+                            <constraint firstItem="kWB-51-fV7" firstAttribute="centerX" secondItem="mdw-Nz-oNb" secondAttribute="centerX" id="vG2-Ox-ygc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f3s-PP-u6r"/>
                     <connections>
                         <outlet property="emailTextField" destination="mSn-aR-1Cg" id="b7D-l1-iDj"/>
+                        <outlet property="loginWithGoogleButton" destination="kWB-51-fV7" id="Dca-uy-E3x"/>
                         <outlet property="passwordTextField" destination="heG-S2-PrJ" id="Gge-MJ-Gnk"/>
                     </connections>
                 </viewController>

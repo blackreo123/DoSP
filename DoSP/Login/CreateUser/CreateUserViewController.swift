@@ -35,17 +35,8 @@ class CreateUserViewController: UIViewController {
                 guard let self = self else { return }
                 
                 if let error = error {
-                    let code = (error as NSError).code
-                    
-                    switch code {
-                    case 17007:
-                        // email address is already in use by another account
-                        Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
-                        return
-                    default:
-                        Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
-                        return
-                    }
+                    Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
+                    return
                 } else {
                     Auth.auth().currentUser?.sendEmailVerification { error in
                         if let error = error {
