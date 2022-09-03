@@ -22,6 +22,8 @@
 		62C84B1728BF726700F945D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C84B1628BF726700F945D4 /* LoginViewController.swift */; };
 		62C93B1228C0C86E00086C4A /* LoginViewControllerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C93B1128C0C86E00086C4A /* LoginViewControllerEx.swift */; };
 		62DF0F4328BFCE9600712610 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 62DF0F4228BFCE9600712610 /* SnapKit */; };
+		62ECA91728C3BE07003CC6F4 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ECA91628C3BE07003CC6F4 /* Loading.swift */; };
+		62ECA91B28C3C5C5003CC6F4 /* UIApplicationEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ECA91A28C3C5C5003CC6F4 /* UIApplicationEx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		62C84B0F28BF70C300F945D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62C84B1628BF726700F945D4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		62C93B1128C0C86E00086C4A /* LoginViewControllerEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerEx.swift; sourceTree = "<group>"; };
+		62ECA91628C3BE07003CC6F4 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		62ECA91A28C3C5C5003CC6F4 /* UIApplicationEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationEx.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				6222895828C0565E00D90178 /* Alerts.swift */,
+				62ECA91628C3BE07003CC6F4 /* Loading.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				62C93B1128C0C86E00086C4A /* LoginViewControllerEx.swift */,
+				62ECA91A28C3C5C5003CC6F4 /* UIApplicationEx.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -220,8 +226,10 @@
 				620CD1C228BFC7650093C03B /* CreateUserViewController.swift in Sources */,
 				62C84B0228BF70C000F945D4 /* AppDelegate.swift in Sources */,
 				623B9B1F28BF9588009772A8 /* TestViewController.swift in Sources */,
+				62ECA91B28C3C5C5003CC6F4 /* UIApplicationEx.swift in Sources */,
 				6222895928C0565E00D90178 /* Alerts.swift in Sources */,
 				62C84B0428BF70C000F945D4 /* SceneDelegate.swift in Sources */,
+				62ECA91728C3BE07003CC6F4 /* Loading.swift in Sources */,
 				62C93B1228C0C86E00086C4A /* LoginViewControllerEx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

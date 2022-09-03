@@ -25,24 +25,34 @@ class CreateUserViewController: UIViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: UIButton) {
+        Loading.showLoading()
         guard let email = self.createEmailTextField.text,
               let password = self.createPasswordTextField.text,
-              let passwordConfirm = self.createPasswordConfirmTextField.text else { return }
+              let passwordConfirm = self.createPasswordConfirmTextField.text else {
+            Loading.hideLoading()
+            return
+        }
         
         if password == passwordConfirm {
             
             Auth.auth().createUser(withEmail: email, password: password){ [weak self] authResult, error in
-                guard let self = self else { return }
+                guard let self = self else {
+                    Loading.hideLoading()
+                    return
+                }
                 
                 if let error = error {
-                    Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
+                    Loading.hideLoading()
+                    Alerts.showAlertAction(message: error.localizedDescription, completeTitle: "OK")
                     return
                 } else {
                     Auth.auth().currentUser?.sendEmailVerification { error in
                         if let error = error {
-                            Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
+                            Loading.hideLoading()
+                            Alerts.showAlertAction(message: error.localizedDescription, completeTitle: "OK")
                         } else {
-                            Alerts.showAlertAction(viewController: self, message: "we send verify email please check you email", completeTitle: "OK") {
+                            Loading.hideLoading()
+                            Alerts.showAlertAction(message: "we send verify email please check you email", completeTitle: "OK") {
                                 self.navigationController?.popViewController(animated: true)
                             }
                         }
@@ -51,7 +61,8 @@ class CreateUserViewController: UIViewController {
                 }
             }
         } else {
-            Alerts.showAlertAction(viewController: self, message: "password not equal with password Confirm")
+            Loading.hideLoading()
+            Alerts.showAlertAction(message: "password not equal with password Confirm")
             return
         }
     }

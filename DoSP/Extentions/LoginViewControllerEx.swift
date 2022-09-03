@@ -13,22 +13,26 @@ import Firebase
 import AuthenticationServices
 import CryptoKit
 
-
+// MARK: - Apple Sign In
 extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
+        Loading.hideLoading()
+        Alerts.showAlertAction(message: error.localizedDescription, completeTitle: "OK")
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
+                Loading.hideLoading()
                 fatalError("Invalid state: A login callback was received, but no login request was sent")
             }
             guard let appleIDToken = appleIDCredential.identityToken else {
+                Loading.hideLoading()
                 print("Unable to fetch identity token")
                 return
             }
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                Loading.hideLoading()
                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                 return
             }
@@ -37,9 +41,11 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             
             Auth.auth().signIn(with: credential) { authDataResult, error in
                 if let error = error {
-                    Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
+                    Loading.hideLoading()
+                    Alerts.showAlertAction(message: error.localizedDescription, completeTitle: "OK")
                 } else {
-                    Alerts.showAlertAction(viewController: self, message: "Apple sign in success", completeTitle: "OK") {
+                    Loading.hideLoading()
+                    Alerts.showAlertAction(message: "Apple sign in success", completeTitle: "OK") {
                         self.goMainViewController()
                     }
                 }
@@ -68,9 +74,8 @@ extension LoginViewController {
                 var random: UInt8 = 0
                 let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
                 if errorCode != errSecSuccess {
-                    fatalError(
-                        "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
-                    )
+                    Loading.hideLoading()
+                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
                 }
                 return random
             }

@@ -30,7 +30,6 @@ class LoginViewController: UIViewController {
         let email = self.emailTextField.text ?? ""
         let password = self.passwordTextField.text ?? ""
         self.loginUserWithEmailAndPassword(withEmail: email, password: password)
-        
     }
     
     func goMainViewController() {
@@ -40,20 +39,28 @@ class LoginViewController: UIViewController {
     }
     
     private func loginUserWithEmailAndPassword(withEmail email: String, password: String) {
+        Loading.showLoading()
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
-            guard let self = self else {return}
+            guard let self = self else {
+                Loading.hideLoading()
+                return
+            }
             if let error = error {
-                Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
+                Loading.hideLoading()
+                Alerts.showAlertAction(message: error.localizedDescription, completeTitle: "OK")
             } else {
                 guard let isEmailVerified = Auth.auth().currentUser?.isEmailVerified else {
-                    Alerts.showAlertAction(viewController: self, message: "your email is not Verified please check your email")
+                    Loading.hideLoading()
+                    Alerts.showAlertAction(message: "your email is not Verified please check your email")
                     return
                 }
                 
                 if isEmailVerified {
+                    Loading.hideLoading()
                     self.goMainViewController()
                 } else {
-                    Alerts.showAlertAction(viewController: self, message: "your email is not Verified please check your email")
+                    Loading.hideLoading()
+                    Alerts.showAlertAction(message: "your email is not Verified please check your email")
                 }
             }
         }
@@ -66,24 +73,34 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginWithGoogleButtonTapped(_ sender: UIButton) {
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        Loading.showLoading()
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            Loading.hideLoading()
+            return
+        }
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
             if let error = error {
-                Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
+                Loading.hideLoading()
+                Alerts.showAlertAction(message: error.localizedDescription, completeTitle: "OK")
                 return
             }
             
             guard let authentication = user?.authentication,
-                  let idToken = authentication.idToken else { return }
+                  let idToken = authentication.idToken else {
+                Loading.hideLoading()
+                return
+            }
             
             let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
             
             Auth.auth().signIn(with: credential) { authDataResult, error in
                 if let error = error {
-                    Alerts.showAlertAction(viewController: self, message: error.localizedDescription, completeTitle: "OK")
+                    Loading.hideLoading()
+                    Alerts.showAlertAction(message: error.localizedDescription, completeTitle: "OK")
                     return
                 } else {
+                    Loading.hideLoading()
                     self.goMainViewController()
                 }
             }
@@ -91,6 +108,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginWithAppleButtonTapped(_ sender: UIButton) {
+        Loading.showLoading()
         self.performLoginWithApple()
     }
     
