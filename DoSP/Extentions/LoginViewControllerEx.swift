@@ -16,8 +16,7 @@ import CryptoKit
 // MARK: - Apple Sign In
 extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        Loading.hideLoading()
-        Alerts.showAlertAction(message: error.localizedDescription, completeTitle: "OK")
+        print("error: \(error.localizedDescription)")
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {

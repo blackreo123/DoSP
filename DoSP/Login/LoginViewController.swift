@@ -11,12 +11,15 @@ import GoogleSignIn
 import FirebaseAuth
 import Firebase
 import AuthenticationServices
+import SnapKit
 
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginWithEmailButton: UIButton!
+    @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var loginWithGoogleButton: GIDSignInButton!
     @IBOutlet weak var loginWithAppleButton: ASAuthorizationAppleIDButton!
     
@@ -24,6 +27,35 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "LogIn"
+        setButtonLayout()
+        setTextFieldLayout()
+    }
+    
+    private func setTextFieldLayout() {
+        [emailTextField, passwordTextField].forEach({
+            self.setToolbar(textField: $0!)
+            $0!.snp.makeConstraints({
+                $0.height.equalTo(35)
+            })
+        })
+        emailTextField.addBottomLine(borderWidth: 2, color: .black)
+        passwordTextField.addBottomLine(borderWidth: 2, color: .black)
+    }
+    
+    private func setButtonLayout() {
+        [loginWithEmailButton, createAccountButton, loginWithGoogleButton].forEach { button in
+            button?.layer.cornerRadius = 10
+            button?.layer.borderWidth = 1
+            button?.tintColor = .darkGray
+            button?.snp.makeConstraints({
+                $0.height.equalTo(58)
+            })
+        }
+
+        loginWithAppleButton.snp.makeConstraints({
+            $0.height.equalTo(58)
+        })
     }
     
     @IBAction func emailLoginButtonTapped(_ sender: UIButton) {
@@ -108,7 +140,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginWithAppleButtonTapped(_ sender: UIButton) {
-        Loading.showLoading()
         self.performLoginWithApple()
     }
     

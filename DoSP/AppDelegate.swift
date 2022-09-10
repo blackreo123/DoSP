@@ -9,11 +9,16 @@ import UIKit
 import FirebaseCore
 import GoogleSignIn
 import Firebase
+import FirebaseAppCheck
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let providerFactory = YourAppCheckProviderFactory()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
+        
         FirebaseApp.configure()
         
         if let user = Auth.auth().currentUser {
